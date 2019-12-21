@@ -4,7 +4,7 @@ def ripemd160(x):
     d.update(x)
     return d
     
-for n in range(10):   # number of key pairs to generate`
+for n in range(100):   # number of key pairs to generate`
 
     # generate private key , uncompressed WIF starts with "5"
     priv_key = os.urandom(32)
@@ -22,7 +22,9 @@ for n in range(10):   # number of key pairs to generate`
     checksum = hashlib.sha256(hashlib.sha256(publ_addr_a).digest()).digest()[:4]
     publ_addr_b = base58.b58encode(publ_addr_a + checksum)
     i = n + 1
-    print('Private Key    ', str(i) + ": " + WIF.decode())
+    print('\n')
+    print("Private Key    ", str(i) + ": " + WIF.decode())
     print("Bitcoin Address", str(i) + ": " + publ_addr_b.decode())
+    print("Public Key     ", str(i) + ": " + publ_key.decode())
 
 print("Good Luck!!!")
